@@ -1,0 +1,84 @@
+{% if section.settings.title != blank %}
+<div>
+  <h2>{{ section.settings.title | escape }}</h2>
+</div>
+{% endif %}
+
+{%- assign collection = collections[section.settings.collection] -%}
+
+{%- assign product_limit = section.settings.items -%}
+<div class="itemgrid">
+  {% for product in collection.products limit: product_limit %}
+  <div class="product">
+    <div class="product-image">
+      <a href="{{ product.url }}">
+        <img src="{{product.featured_media | img_url: 'large'}}" class="my-auto">
+      </a>
+    </div>
+    <div class="product-info">
+      <a href="{{ product.url }}">
+        <h5>{{product.title}} <span class="badge bg-blue">{{ product.price | money }}</span></h5>
+      </a>
+      <div class="product-buttons">
+        <a href="{{ product.url }}" class="btn d-none d-lg-block">
+          More Info
+        </a>
+        <a href="{{ product.url }}" class="btn btn-dark">
+          <i class="bi bi-cart-plus"></i> Add To Cart
+        </a>
+      </div>
+    </div>
+  </div>
+  {% else %}
+  <h1>this collection is empty dummy fix it!!!</h1>
+  {% endfor %}
+</div>
+
+{% schema %}
+{
+  "name": {
+    "en": "Collection"
+  },
+  "class": "index-section",
+  "settings": [
+    {
+      "type": "text",
+      "id": "title",
+      "label": {
+        "en": "Heading - leave blank for none"
+      },
+      "default": {
+        "en": "Featured collection"
+      }
+    },
+    {
+      "id": "collection",
+      "type": "collection",
+      "label": {
+        "en": "Collection"
+      }
+    },
+    {
+      "type": "range",
+      "id": "items",
+      "label": {
+        "en": "# of products"
+      },
+      "min": 1,
+      "max": 69,
+      "step": 1,
+      "default": 8
+    }
+  ],
+  "presets": [
+    {
+      "name": {
+        "en": "Featured collecton"
+      },
+      "category": {
+        "en": "Collection"
+      }
+    }
+  ]
+}
+{% endschema %}

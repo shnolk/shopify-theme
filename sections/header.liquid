@@ -1,0 +1,133 @@
+<header>
+  <nav id="nav">
+    <ul>
+    {% assign menu = linklists[section.settings.main_linklist] %}
+    {% for link in menu.links %}
+      {% if link.links != blank %}
+      <li>
+        <a href="{{ link.url }}">{{ link.title | escape }}</a>
+        <ul class="sub">
+          {% for childlink in link.links %}
+            <li><a href="{{ childlink.url }}">{{ childlink.title | escape }}</a></li>
+          {% endfor %}
+        </ul>
+      </li>
+      {% else %}
+      <li>
+        <a href="{{ link.url }}">{{ link.title | escape }}</a>
+      </li>
+      {% endif %}
+    {% endfor %}
+    </ul>
+  </nav>
+</header>
+
+{% schema %}
+{
+  "name": "Header",
+  "settings": [
+    {
+      "type": "radio",
+      "id": "align_logo",
+      "label": {
+        "en": "Logo alignment (Remove this later)"
+      },
+      "default": "left",
+      "options": [
+        {
+          "value": "left",
+          "label": {
+            "en": "Left"
+          }
+        },
+        {
+          "value": "center",
+          "label": {
+            "en": "Center"
+          }
+        }
+      ]
+    },
+    {
+      "type": "image_picker",
+      "id": "logo",
+      "label": {
+        "en": "Logo image"
+      }
+    },
+    {
+      "type": "range",
+      "id": "logo_max_width",
+      "label": {
+        "en": "Custom logo width"
+      },
+      "min": 50,
+      "max": 250,
+      "step": 5,
+      "unit": "px",
+      "default": 100
+    },
+    {
+      "type": "link_list",
+      "id": "main_linklist",
+      "label": {
+        "en": "Menu"
+      },
+      "default": "main-menu"
+    },
+    {
+      "type": "header",
+      "content": "Announcement bar"
+    },
+    {
+      "type": "checkbox",
+      "id": "message",
+      "label": {
+        "en": "Show announcement"
+      },
+      "default": false
+    },
+    {
+      "type": "checkbox",
+      "id": "home_page_only",
+      "label": {
+        "en": "Home page only"
+      },
+      "default": true
+    },
+    {
+      "type": "text",
+      "id": "message_text",
+      "label": {
+        "en": "Text"
+      },
+      "default": "Announce something here"
+    },
+    {
+      "type": "url",
+      "id": "message_link",
+      "label": {
+        "en": "Link"
+      },
+      "info": "Optional"
+    },
+    {
+      "type": "color",
+      "id": "color_bg",
+      "label": {
+        "en": "Bar"
+      },
+      "default": "#3a3a3a"
+    },
+    {
+      "type": "color",
+      "id": "color_text",
+      "label": {
+        "en": "Text"
+      },
+      "default": "#ffffff"
+    }
+  ]
+}
+
+{% endschema %}

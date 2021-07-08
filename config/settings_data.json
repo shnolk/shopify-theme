@@ -1,0 +1,42 @@
+{
+  "current": {
+    "sections": {
+      "header": {
+        "type": "header",
+        "settings": {
+          "align_logo": "left",
+          "logo_max_width": 100,
+          "main_linklist": "",
+          "message": false,
+          "home_page_only": true,
+          "message_text": "Announce something here",
+          "color_bg": "#3a3a3a",
+          "color_text": "#ffffff"
+        }
+      },
+      "1621369600e9c7b406": {
+        "type": "itemgrid",
+        "settings": {
+          "title": "Featured Products",
+          "collection": "featured",
+          "items": 4
+        }
+      },
+      "1621550951f9c246d3": {
+        "type": "itemgrid",
+        "settings": {
+          "title": "Apparel & More",
+          "collection": "apparel-more",
+          "items": 22
+        }
+      }
+    },
+    "content_for_index": [
+      "1621369600e9c7b406",
+      "1621550951f9c246d3"
+    ]
+  },
+  "presets": {
+    "Default": {}
+  }
+}

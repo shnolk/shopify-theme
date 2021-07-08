@@ -1,0 +1,171 @@
+<header>
+    <nav class="navbar" id="navbar">
+        <div class="container-fluid">
+          <a class="navbar-brand" href="#">Hi-Tuned Performance</a>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarScroll" aria-controls="navbarScroll" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+
+          
+
+          <div class="navbar-collapse" id="navbarScroll">
+            <ul class="navbar-nav me-auto my-2 my-md-0 navbar-nav-scroll" style="--bs-scroll-height: 100px;">
+              {% assign menu = linklists[section.settings.main_linklist] %}
+              {% for link in menu.links %}
+                {% if link.links != blank %}
+                  <li class="nav-item">
+                    <a class="nav-link dropdown-toggle" href="#" id="navbarScrollingDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">{{ link.title | escape }}</a>
+                    <ul class="dropdown-menu" aria-labelledby="navbarScrollingDropdown">
+                      {% for childlink in link.links %}
+                        <li><a class="dropdown-item" href="{{ childlink.url }}">{{ childlink.title | escape }}</a></li>
+                      {% endfor %}
+                      <li><hr class="dropdown-divider"></li>
+                      <li><a class="dropdown-item" href="{{ link.url }}">View All</a></li>
+                    </ul>
+                  </li>
+                {% else %}
+                  <li class="nav-item">
+                    <a class="nav-link" href="{{ link.url }}">{{ link.title | escape }}</a>
+                  </li>
+                {% endif %}
+              {% endfor %}
+              <!--
+              <li class="nav-item">
+                <a class="nav-link active" aria-current="page" href="#">Home</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="#">Link</a>
+              </li>
+              <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" id="navbarScrollingDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                  Link
+                </a>
+                <ul class="dropdown-menu" aria-labelledby="navbarScrollingDropdown">
+                  <li><a class="dropdown-item" href="#">Action</a></li>
+                  <li><a class="dropdown-item" href="#">Another action</a></li>
+                  <li><hr class="dropdown-divider"></li>
+                  <li><a class="dropdown-item" href="#">Something else here</a></li>
+                </ul>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Link</a>
+              </li> -->
+            </ul>
+            <form class="d-flex">
+              <input class="form-control" type="search" placeholder="Search" aria-label="Search">
+              <button class="btn btn-outline-success" type="submit">Search</button>
+            </form>
+          </div>
+        </div>
+      </nav>
+</header>
+
+{% schema %}
+{
+  "name": "Header",
+  "settings": [
+    {
+      "type": "radio",
+      "id": "align_logo",
+      "label": {
+        "en": "Logo alignment (Remove this later)"
+      },
+      "default": "left",
+      "options": [
+        {
+          "value": "left",
+          "label": {
+            "en": "Left"
+          }
+        },
+        {
+          "value": "center",
+          "label": {
+            "en": "Center"
+          }
+        }
+      ]
+    },
+    {
+      "type": "image_picker",
+      "id": "logo",
+      "label": {
+        "en": "Logo image"
+      }
+    },
+    {
+      "type": "range",
+      "id": "logo_max_width",
+      "label": {
+        "en": "Custom logo width"
+      },
+      "min": 50,
+      "max": 250,
+      "step": 5,
+      "unit": "px",
+      "default": 100
+    },
+    {
+      "type": "link_list",
+      "id": "main_linklist",
+      "label": {
+        "en": "Menu"
+      },
+      "default": "main-menu"
+    },
+    {
+      "type": "header",
+      "content": "Announcement bar"
+    },
+    {
+      "type": "checkbox",
+      "id": "message",
+      "label": {
+        "en": "Show announcement"
+      },
+      "default": false
+    },
+    {
+      "type": "checkbox",
+      "id": "home_page_only",
+      "label": {
+        "en": "Home page only"
+      },
+      "default": true
+    },
+    {
+      "type": "text",
+      "id": "message_text",
+      "label": {
+        "en": "Text"
+      },
+      "default": "Announce something here"
+    },
+    {
+      "type": "url",
+      "id": "message_link",
+      "label": {
+        "en": "Link"
+      },
+      "info": "Optional"
+    },
+    {
+      "type": "color",
+      "id": "color_bg",
+      "label": {
+        "en": "Bar"
+      },
+      "default": "#3a3a3a"
+    },
+    {
+      "type": "color",
+      "id": "color_text",
+      "label": {
+        "en": "Text"
+      },
+      "default": "#ffffff"
+    }
+  ]
+}
+
+{% endschema %}
