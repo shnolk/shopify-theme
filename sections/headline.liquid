@@ -1,0 +1,40 @@
+<div>
+    <img src="{{ section.settings.background-image | img_url }}">
+</div>
+<div>
+    <h1>{{ section.settings.title | escape }}</h1>
+</div>
+</div>
+
+{% schema %}
+{
+  "name": "Headline",
+  "tag": "section", 
+  "class": "headline",
+  "settings": [
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Heading - leave blank for none",
+      "default": "Write something here."
+    },
+    {
+        "type": "color",
+        "id": "color",
+        "label": "Color",
+        "default": "#a1130b"
+    },
+    {
+        "type": "image_picker",
+        "id": "background-image",
+        "label": "Background Image"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Headline",
+      "category": "Headline Category"
+    }
+  ]
+}
+{% endschema %}
