@@ -1,30 +1,29 @@
-<header>
-  <nav id="nav">
-    <ul>
-    {% assign menu = linklists[section.settings.main_linklist] %}
-    {% for link in menu.links %}
-      {% if link.links != blank %}
-      <li>
-        <a href="{{ link.url }}">{{ link.title | escape }}</a>
-        <ul class="sub">
-          {% for childlink in link.links %}
-            <li><a href="{{ childlink.url }}">{{ childlink.title | escape }}</a></li>
-          {% endfor %}
-        </ul>
-      </li>
-      {% else %}
-      <li>
-        <a href="{{ link.url }}">{{ link.title | escape }}</a>
-      </li>
-      {% endif %}
-    {% endfor %}
-    </ul>
-  </nav>
-</header>
+<nav id="nav">
+	<ul>
+		{% assign menu = linklists[section.settings.main_linklist] %}
+		{% for link in menu.links %}
+		{% if link.links != blank %}
+		<li>
+			<a href="{{ link.url }}">{{ link.title | escape }}</a>
+			<ul class="sub">
+				{% for childlink in link.links %}
+				<li><a href="{{ childlink.url }}">{{ childlink.title | escape }}</a></li>
+				{% endfor %}
+			</ul>
+		</li>
+		{% else %}
+		<li>
+			<a href="{{ link.url }}">{{ link.title | escape }}</a>
+		</li>
+		{% endif %}
+		{% endfor %}
+	</ul>
+</nav>
 
 {% schema %}
 {
   "name": "Header",
+  "tag": "header",
   "settings": [
     {
       "type": "radio",
