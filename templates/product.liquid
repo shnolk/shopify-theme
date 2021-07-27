@@ -29,8 +29,8 @@
 
 <div>
 	<div class="first">
-	{% if product.description contains "<!--SPLIT-->" %}
-		{{ product.description | split:"<!--SPLIT-->" | first}}
+	{% if product.description contains '<!--SPLIT-->' %}
+		{{ product.description | split:'<!--SPLIT-->' | first}}
 	{% else %}
 		{{ product.description }}
 	{% endif %}
@@ -38,8 +38,8 @@
 	<br>
 	<br>
 	<div class="last">
-	{% if product.description contains "<!--SPLIT-->" %}
-		{{ product.description | split:"<!--SPLIT-->" | last}}
+	{% if product.description contains '<!--SPLIT-->' %}
+		{{ product.description | split:'<!--SPLIT-->' | last}}
 	{% endif %}
 	</div>
 </div>
