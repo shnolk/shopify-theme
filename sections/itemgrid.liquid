@@ -1,6 +1,11 @@
 {% if section.settings.title != blank %}
-<div class="itemgrid-heading">
-	<h2>{{ section.settings.title | escape }}</h2>
+<div>
+	<div class="itemgrid-heading">
+		<a href="{{ section.settings.collection.url }}">
+			<h2>{{ section.settings.title | escape }}</h2>
+			<i class="bi bi-arrow-right"></i>
+		</a>
+	</div>
 </div>
 {% endif %}
 
@@ -8,18 +13,18 @@
 {%- assign product_limit = section.settings.items -%}
 
 {% for product in collection.products limit: product_limit %}
-<div>
-	<div>
+<div class="itemgrid-product">
+	<div class="product-image">
   		<a href="{{ product.url }}">
   			<img src="{{product.featured_media | img_url: 'large'}}" class="my-auto">
   		</a>
   	</div>
-  	<div>
+  	<div class="product-info">
   		<a href="{{ product.url }}">
   			<h5>{{product.title}} <span class="badge bg-blue">{{ product.price | money }}</span></h5>
   		</a>
   		<div class="product-buttons">
-  			<a href="{{ product.url }}" class="btn">
+  			<a href="{{ product.url }}" class="btn btn-collapse">
   				More Info
   			</a>
   			<a href="{{ product.url }}" class="btn btn-dark">
@@ -34,7 +39,7 @@
 
 {% schema %}
 {
-  "name": "Item Grid",
+  "name": "Collection Grid",
   "class": "itemgrid",
   "tag": "section",
   "settings": [
