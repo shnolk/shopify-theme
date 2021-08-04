@@ -14,16 +14,18 @@
 			{% else %}
 				{{ product.description }}
 			{% endif %}
-			</div>
-			<br>
-			<hr>
-			<br>
-			<div class="last">
+		</div>
+		<br>
+		<hr>
+		<br>
+		<div class="last">
 			
 			{% if product.description contains '<!--SPLIT-->' %}
 				{{ product.description | split:'<!--SPLIT-->' | last}}
 			{% endif %}
 		</div>
+		<br>
+		<hr>
 		<br>
 		<form action="/cart/add" method="post" enctype="multipart/form-data" id="AddToCartForm">
 			<select name="id" id="productSelect">
