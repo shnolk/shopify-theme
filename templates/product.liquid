@@ -2,11 +2,11 @@
 {% assign featured_image = current_variant.featured_image | default: product.featured_image %}
 
 <div class="productpage">
-	<div>
+	<div class="pics">
 		<img src="{{ product.images[1] | img_url: 'original' }}" alt="{{ featured_image.alt | escape }}" id="ProductPhotoImg">
 		<img src="{{ product.images[2] | img_url: 'original' }}" alt="{{ featured_image.alt | escape }}" id="ProductPhotoImg">
 	</div>
-	<div>
+	<div class="info">
 		<h1>{{ product.title }}</h1>
 		<div class="first">
 			{% if product.description contains '<!--SPLIT-->' %}
@@ -15,12 +15,12 @@
 				{{ product.description }}
 			{% endif %}
 		</div>
-		<br>
-		<hr>
-		<br>
 		<div class="last">
 			
 			{% if product.description contains '<!--SPLIT-->' %}
+				<br>
+				<hr>
+				<br>
 				{{ product.description | split:'<!--SPLIT-->' | last}}
 			{% endif %}
 		</div>

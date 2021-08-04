@@ -307,25 +307,32 @@ nav li:hover .sub > li {
 
 /* Product Page */
 .productpage {
+	width: 100%;
+	padding-inline: 1rem;
+	height: auto;
 	display: flex;
 }
+
+.productpage h1 {
+	text-align: center;
+}
+
 .productpage > div:first-child {
-	width: 66.66%
+	width: 66.66%;
 }
 .productpage > div:last-child {
 	width: 33.33%;
 	padding-inline: 1rem;
-	top: 6rem;
-	position: fixed;
-	right: 0;
+	position: sticky;
+	position: -webkit-sticky;
+	top: 1rem;
+	align-self: flex-start;
 }
 
 .productpage img {
 	max-width: 100%;
 	width: 100%;
 	display: block;
-	align-self: stretch;
-	object-fit: cover;
 	padding-bottom: 0.5rem;
 }
 /* .navbar {
