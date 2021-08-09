@@ -4,7 +4,7 @@
 <div class="productpage">
 	<div>
 		{% for image in product.images offset:1 %}
-			<img src="{{ image.src | img_url: 'original' }}" alt="{{ image.alt | escape }}">
+			<img src="{{ image.src | img_url: '40x40' }}" alt="{{ image.alt | escape }}" data-original="{{ image.src | img_url: 'master' }}" class="pixelator">
 		{% endfor %}
 	</div>
 	<div>
